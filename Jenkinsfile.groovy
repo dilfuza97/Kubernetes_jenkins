@@ -3,7 +3,7 @@ node('master') {
   properties([parameters([string(defaultValue: 'DEV', description: 'Provide ENV', name: 'ENV', trim: true)])])
   properties([parameters([booleanParam(defaultValue: true, description: 'This will do terraform apply', name: 'Terraform_apply'), booleanParam(defaultValue: false, description: 'This will do terraform destroy', name: 'Terraform_destroy')])])
 
-    stage('Checkout SCM') {
+    stage('Clone repo') {
     git 'https://github.com/dilfuza97/Kubernetes_jenkins.git'
   }
 
