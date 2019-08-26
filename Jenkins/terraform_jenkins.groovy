@@ -24,6 +24,17 @@ node('master'){
                             sh "terraform version"
                         }
                     }
+      stage("Terraform plan"){
+      sh "terraform init"
+      sh "terraform plan"
+
+    }
+
+    stage("Terraform apply"){
+        sh "terraform apply --auto-approve"
+
+      }
+  }
                 }
             }
         }
