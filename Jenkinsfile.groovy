@@ -23,7 +23,7 @@ node('master') {
          if (params.Terraform_apply) {
            dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
              echo "##### Terraform Applying the Changes ####"
-             sh "terraform apply  --auto-approve  -var-file=artemis.tf"
+             sh "terraform apply --auto-approve"
            }
         }
     }
@@ -32,7 +32,7 @@ node('master') {
          if (params.Terraform_destroy) {
            dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
              echo "##### Terraform Destroying the Changes ####"
-             sh "terraform destroy  --auto-approve  -var-file=artemis.tf"
+             sh "terraform destroy --auto-approve"
            }
          }
        }
