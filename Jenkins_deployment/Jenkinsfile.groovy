@@ -29,7 +29,7 @@ node('master') {
 
     stage('Terraform Destoy') {
          if (params.Terraform_destroy) {
-          dir("${WORKSPACE}//Kubernetes_jenkins/Jenkins_deployment) {
+          dir("${WORKSPACE}//Kubernetes_jenkins/Jenkins_deployment") {
              sh "terraform destroy --auto-approve /Kubernetes_jenkins/artemis.tf/"
 
          }
