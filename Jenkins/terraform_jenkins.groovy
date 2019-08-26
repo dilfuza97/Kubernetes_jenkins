@@ -8,16 +8,22 @@ node('master'){
       echo Terraform already installed version ${env.terraform}
       """
 }
-     catch(er) {
-      // if terraform does not installed in system stage will install the terraform
-       stage('Installing Terraform') {
-         sh """
-         wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
-         yum install unzip -y
-         unzip terraform_0.11.11_linux_amd64.zip
-         mv terraform /bin
-}
-    }
-
-  }
-}
+    stage("Download Terraform"){
+            steps{
+                ws("tmp/"){
+                    script {
+                        def exists = fileExists 'terraform_0.12.7_linux_amd64.zip'
+                        if (exists) {
+                            sh "unzip -o terraform_0.12.7_linux_amd64.zip"
+                            sh "sudo mv terraform /bin"
+                            sh "terraform version"
+                        } else {
+                            sh "wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip"
+                            sh "unzip -o terraform_0.12.7_linux_amd64.zip"
+                            sh "sudo mv terraform /bin"
+                            sh "terraform version"
+                        }
+                    }
+                }
+            }
+        }
