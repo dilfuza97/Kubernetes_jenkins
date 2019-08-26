@@ -8,7 +8,7 @@ node('master') {
   }
 
     stage("Run Command"){
-       sh "yum install  wget unzip -y"
+       sh "sudo yum install  wget unzip -y"
 
               sudo yum install httpd wget unzip -y
     stage("Download Terraform"){
