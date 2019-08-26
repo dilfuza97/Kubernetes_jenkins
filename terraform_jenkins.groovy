@@ -1,4 +1,6 @@
-node('master'){
+pipeline{
+    agent any
+    stages{
 
     stage("Download Terraform"){
             steps{
@@ -30,4 +32,4 @@ node('master'){
                 }
             }
         }
-  
+  }      
