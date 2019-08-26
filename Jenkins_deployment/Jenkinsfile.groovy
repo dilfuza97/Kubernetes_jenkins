@@ -14,22 +14,22 @@ node('master') {
         sh "terraform version"
 
    stage("Terraform init") {
-     dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf") {
+     dir("${WORKSPACE}/Kubernetes_jenkins/Jenkins_deployment") {
        sh "terraform init"
      }
    }
 
    stage('Terraform Apply/Plan') {
          if (params.Terraform_apply) {
-           dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
-             sh "terraform apply --auto-approve  /Kubernetes_jenkins/artemis.tf/"
+           dir("${WORKSPACE}/Kubernetes_jenkins/Jenkins_deployment") {
+             sh "terraform apply --auto-approve /Kubernetes_jenkins/Jenkins_deployment"
            }
         }
     }
 
     stage('Terraform Destoy') {
          if (params.Terraform_destroy) {
-          dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
+          dir("${WORKSPACE}//Kubernetes_jenkins/Jenkins_deployment) {
              sh "terraform destroy --auto-approve /Kubernetes_jenkins/artemis.tf/"
 
          }
