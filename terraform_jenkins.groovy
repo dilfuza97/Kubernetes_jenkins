@@ -1,13 +1,5 @@
 node('master'){
-  stage('Check terraform') {
 
-    try {
-      // Trying to run terraform command
-      env.terraform  = sh returnStdout: true, script: 'terraform --version'
-      echo """
-      echo Terraform already installed version ${env.terraform}
-      """
-}
     stage("Download Terraform"){
             steps{
                 ws("tmp/"){
@@ -38,4 +30,4 @@ node('master'){
                 }
             }
         }
-  }      
+  }
