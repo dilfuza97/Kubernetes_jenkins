@@ -7,9 +7,6 @@ node('master') {
     git 'https://github.com/dilfuza97/Kubernetes_jenkins.git'
   }
 
-
-
-              sudo yum install httpd wget unzip -y
     stage("Download Terraform"){
        sh "wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip"
         sh "unzip -o terraform_0.12.7_linux_amd64.zip"
