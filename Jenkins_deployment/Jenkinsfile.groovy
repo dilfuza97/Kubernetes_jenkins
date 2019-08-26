@@ -21,7 +21,7 @@ node('master') {
 
    stage('Terraform Apply/Plan') {
          if (params.Terraform_apply) {
-           dir("${WORKSPACE}/kub_deployment/Jenkins_deployment) {
+           dir("${WORKSPACE}/kub_deployment/Jenkins_deployment") {
              sh "terraform apply --auto-approve /kub_deployment/Jenkins_deployment"
            }
         }
