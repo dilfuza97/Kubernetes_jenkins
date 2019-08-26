@@ -7,7 +7,7 @@ node('master') {
     git 'https://github.com/dilfuza97/Kubernetes_jenkins.git'
   }
 
-    
+
 
               sudo yum install httpd wget unzip -y
     stage("Download Terraform"){
@@ -41,4 +41,3 @@ node('master') {
        }
      }
   }
-}
