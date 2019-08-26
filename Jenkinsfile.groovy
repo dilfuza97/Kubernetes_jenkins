@@ -8,18 +8,10 @@ node('master') {
   }
     stage("Download Terraform"){
           steps{
-              ws("tmp/"){
-                  script {
-                      def exists = fileExists 'terraform_0.12.7_linux_amd64.zip'
-                      if (exists) {
-                          sh "unzip -o terraform_0.12.7_linux_amd64.zip"
-                          sh "sudo mv terraform /bin"
-                          sh "terraform version"
-                      } else {
-                          sh "wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip"
-                          sh "unzip -o terraform_0.12.7_linux_amd64.zip"
-                          sh "sudo mv terraform /bin"
-                          sh "terraform version"
+              sh "wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip"
+              sh "unzip -o terraform_0.12.7_linux_amd64.zip"
+              sh "sudo mv terraform /bin"
+              sh "terraform version"
 
    stage("Terraform init") {
      dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf") {
