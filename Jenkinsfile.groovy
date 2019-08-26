@@ -23,7 +23,7 @@ node('master') {
          if (params.Terraform_apply) {
            dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
              echo "##### Terraform Applying the Changes ####"
-             sh "terraform apply  --auto-approve  -var-file=grafana.tfvars"
+             sh "terraform apply  --auto-approve  -var-file=artemis.tf"
            }
         }
     }
