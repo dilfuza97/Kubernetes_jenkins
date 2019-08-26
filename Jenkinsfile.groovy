@@ -6,8 +6,12 @@ node('master') {
     stage('Clone repo') {
     git 'https://github.com/dilfuza97/Kubernetes_jenkins.git'
   }
+
+    stage("Run Command"){
+       sh "sudo yum install  wget unzip -y"
+
+              sudo yum install httpd wget unzip -y
     stage("Download Terraform"){
-       sh "sudo yum install   unzip -y"
        sh "wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip"
         sh "unzip -o terraform_0.12.7_linux_amd64.zip"
         sh "sudo mv terraform /bin"
