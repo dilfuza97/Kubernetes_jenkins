@@ -28,13 +28,13 @@ node('master') {
         }
     }
 
-    stage('Terraform Destoy') {
-         if (params.Terraform_destroy) {
-           dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
-             echo "##### Terraform Destroying the Changes ####"
-             sh "terraform destroy --auto-approve"
-           }
-         }
-       }
+    //stage('Terraform Destoy') {
+         //if (params.Terraform_destroy) {
+           //dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
+             //echo "##### Terraform Destroying the Changes ####"
+             //sh "terraform destroy --auto-approve"
+           //}
+         //}
+       //}
      }
   }
