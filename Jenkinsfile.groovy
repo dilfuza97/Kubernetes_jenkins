@@ -22,7 +22,7 @@ node('master') {
    stage('Terraform Apply/Plan') {
          if (params.Terraform_apply) {
            dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
-             sh "terraform apply --auto-approve"
+             sh "terraform apply --auto-approve  Kuberntes_jenkins/artemis.tf"
            }
         }
     }
@@ -30,7 +30,7 @@ node('master') {
     stage('Terraform Destoy') {
          if (params.Terraform_destroy) {
           dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
-             sh "terraform destroy --auto-approve"
+             sh "terraform destroy --auto-approve Kuberntes_jenkins/artemis.tf"
 
          }
        }
