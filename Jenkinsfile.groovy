@@ -29,9 +29,9 @@ node('master') {
 
     stage('Terraform Destoy') {
          if (params.Terraform_destroy) {
-             echo "##### Terraform Destroying the Changes ####"
+          dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
              sh "terraform destroy --auto-approve"
-           
+
          }
        }
      }
