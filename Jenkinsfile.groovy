@@ -22,19 +22,17 @@ node('master') {
    stage('Terraform Apply/Plan') {
          if (params.Terraform_apply) {
            dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
-             echo "##### Terraform Applying the Changes ####"
              sh "terraform apply --auto-approve"
            }
         }
     }
 
-    //stage('Terraform Destoy') {
-         //if (params.Terraform_destroy) {
-           //dir("${WORKSPACE}/Kubernetes_jenkins/artemis.tf/") {
-             //echo "##### Terraform Destroying the Changes ####"
-             //sh "terraform destroy --auto-approve"
-           //}
-         //}
-       //}
+    stage('Terraform Destoy') {
+         if (params.Terraform_destroy) {
+             echo "##### Terraform Destroying the Changes ####"
+             sh "terraform destroy --auto-approve"
+           
+         }
+       }
      }
   }
